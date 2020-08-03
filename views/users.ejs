@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users Management Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+		<h1>Users Management Page</h1>
+		<ul>
+			<% users.forEach(user => { %>
+			<li>
+				<h3>
+					<%= user.username %>
+					<a href="/users/delete/<%= user.username %>">Delete</a>
+					<a href="/users/update">Update</a>
+				</h3>
+			</li>
+			<% }); %>
+		</ul>
+		<h3><a href="/users/add">Add New</a></h3>
+  </body>
+</html>
