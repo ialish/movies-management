@@ -5,12 +5,17 @@ const getUsers = require('../models/readJSON');
 const deleteUser = require('../controllers/deleteUser');
 
 router.get('/', async function(req, res, next) {
-	const users = await getUsers('data/users.json');
+	const filename = 'data/users.json';
+	const users = await getUsers(filename);
+
 	res.render('users', { users });
 });
 
-router.delete('/delete/:username', async function(req, res, next) {
-	await deleteUser('data/users.json', req.params.username);
+router.delete('/delete/:username', function(req, res, next) {
+	const filename = 'data/users.json';
+	const username = req.params.username;
+
+	deleteUser(filename, username);
 	res.redirect('/users');
 });
 

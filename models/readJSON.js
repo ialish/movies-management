@@ -1,8 +1,8 @@
 const jsonfile = require('jsonfile');
 
-const getData = (fileName) => {
+const getData = (filename) => {
 	return new Promise((resolve) => {
-		jsonfile.readFile(__dirname + '/../' + fileName, (err, obj) => {
+		jsonfile.readFile(__dirname + '/../' + filename, (err, obj) => {
 			if (err) throw err;
 			resolve(obj);
 		});
