@@ -14,7 +14,7 @@ router.get('/delete/:username', function(req, res, next) {
 	const filename = 'data/users.json';
 	const username = req.params.username;
 	deleteUser(filename, username);
-	res.redirect('users');
+	res.redirect('/users');
 });
 
 router.get('/update', function(req, res, next) {
