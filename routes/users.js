@@ -7,23 +7,21 @@ const deleteUser = require('../controllers/deleteUser');
 router.get('/', async function(req, res, next) {
 	const filename = 'data/users.json';
 	const users = await getUsers(filename);
-
 	res.render('users', { users });
 });
 
-router.delete('/delete/:username', function(req, res, next) {
+router.get('/delete/:username', function(req, res, next) {
 	const filename = 'data/users.json';
 	const username = req.params.username;
-
 	deleteUser(filename, username);
-	res.redirect('/users');
+	res.redirect('users');
 });
 
-router.put('/update', function(req, res, next) {
+router.get('/update', function(req, res, next) {
 	
 });
 
-router.post('/add', function(req, res, next) {
+router.get('/add', function(req, res, next) {
 	
 });
 
