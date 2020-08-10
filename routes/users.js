@@ -5,6 +5,7 @@ const getUsers = require('../models/readJSON');
 const deleteUser = require('../controllers/deleteUser');
 const getUser = require('../controllers/getUser');
 const updateUser = require('../controllers/updateUser');
+const addUser = require('../controllers/addUser');
 
 router.get('/', async function(req, res, next) {
 	const filename = 'data/users.json';
