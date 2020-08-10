@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const moment = require('moment');
+
 const getUsers = require('../models/readJSON');
 const deleteUser = require('../controllers/deleteUser');
 const getUser = require('../controllers/getUser');
@@ -35,7 +37,7 @@ router.post('/user/update/:username', function(req, res, next) {
 	const user = {
 		username: req.body.username,
 		password: req.body.password,
-		cratedDate: req.body.cratedDate,
+		createdDate: req.body.createdDate,
 		numOfTransactions: req.body.numOfTransactions
 	};
 	updateUser(filename, username, user);
@@ -44,7 +46,8 @@ router.post('/user/update/:username', function(req, res, next) {
 
 // Add new user
 router.get('/user', function(req, res, next) {
-	const user = {};
+	const currentDate = moment().format('DD-MM-YYYY');
+	const user = { createdDate: currentDate };
 	res.render('user', { user, button: "Save", route: "add" });
 });
 
@@ -53,7 +56,7 @@ router.post('/user/add', function(req, res, next) {
 	const user = {
 		username: req.body.username,
 		password: req.body.password,
-		cratedDate: req.body.cratedDate,
+		createdDate: req.body.createdDate,
 		numOfTransactions: req.body.numOfTransactions
 	};
 	addUser(filename, user);
