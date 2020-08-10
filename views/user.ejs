@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Data Page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>User Data Page</h1>
+    <form action="/users/user/<%= route %>/<%= user.username %>" method="post">
+			<label for="username">User Name:</label>
+			<input type="text" id="username" name="username" value="<%= user.username %>"><br><br>
+			<label for="password">Password:</label>
+			<input type="text" id="password" name="password" value="<%= user.password %>"><br><br>
+			<label for="cratedDate">Created Date:</label>
+			<input type="text" id="cratedDate" name="cratedDate" value="<%= user.cratedDate %>"><br><br>
+			<label for="numOfTransactions">Number of Transactions:</label>
+			<input type="text" id="numOfTransactions" name="numOfTransactions" value="<%= user.numOfTransactions %>"><br><br>
+			<input type="submit" value="<%= button %>">
+		</form>
+  </body>
+</html>
