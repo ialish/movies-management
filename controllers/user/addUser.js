@@ -1,5 +1,5 @@
-const getUsers = require('../models/readJSON');
-const setUsers = require('../models/writeJSON');
+const getUsers = require('../../models/readJSON');
+const setUsers = require('../../models/writeJSON');
 
 const addUser = async (userObj) => {
 	const filename = 'data/users.json';

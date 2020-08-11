@@ -1,4 +1,4 @@
-const getUsers = require('../models/readJSON');
+const getUsers = require('../../models/readJSON');
 
 const getUser = async (username) => {
 	const filename = 'data/users.json';

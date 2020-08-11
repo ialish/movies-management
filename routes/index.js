@@ -8,11 +8,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', async function(req, res, next) {
-	await checkCredentials(req);	
+	await checkCredentials(req);
 	if (req.session.admin) {
 		res.redirect('menu');
 	} else if (req.session.user) {
-		if (req.session.numOfTransactions > 0) {
+		if (req.session.user.numOfTransactions > 0) {
 			res.redirect('menu');
 		} else {
 			res.send('<h1>You have no more credits left today</h1>');

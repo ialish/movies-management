@@ -7,6 +7,7 @@ const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const menuRouter = require('./routes/menu');
+const createMovieRouter = require('./routes/createMovie');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/menu', menuRouter);
+app.use('/create-movie', createMovieRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

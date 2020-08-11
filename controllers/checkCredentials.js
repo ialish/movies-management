@@ -8,13 +8,10 @@ const checkCredentials = async (req) => {
 	const sess = req.session;
 	
 	if (users[0].username === username && users[0].password === password) {
-		sess.admin = true;
+		sess.admin = users[0];
 	} else {
-		users.forEach(user => {
-			if (user.username === username && user.password === password) {
-				sess.user = true;
-				sess.numOfTransactions = user.numOfTransactions;
-			};
+		sess.user = users.find(user => { 
+			return user.username === username && user.password === password;
 		});
 	};
 };

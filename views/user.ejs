@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>User Data Page</title>
+    <title>User Data</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>User Data Page</h1>
+    <h1>User Data</h1>
     <form action="/users/user/<%= route %>/<%= user.username %>" method="post">
 			<label for="username">User Name:</label>
 			<input type="text" id="username" name="username" value="<%= user.username %>"><br><br>

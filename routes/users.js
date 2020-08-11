@@ -4,10 +4,10 @@ const router = express.Router();
 const moment = require('moment');
 
 const getUsers = require('../models/readJSON');
-const deleteUser = require('../controllers/deleteUser');
-const getUser = require('../controllers/getUser');
-const updateUser = require('../controllers/updateUser');
-const addUser = require('../controllers/addUser');
+const deleteUser = require('../controllers/user/deleteUser');
+const getUser = require('../controllers/user/getUser');
+const updateUser = require('../controllers/user/updateUser');
+const addUser = require('../controllers/user/addUser');
 
 router.get('/', async function(req, res, next) {
 	if (!req.session.admin) {
