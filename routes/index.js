@@ -15,10 +15,12 @@ router.post('/login', async function(req, res, next) {
 		if (req.session.user.numOfTransactions > 0) {
 			res.redirect('menu');
 		} else {
-			res.send('<h1>You have no more credits left today</h1>');
+			const message = 'You have no more credits left today';
+			res.render('alert', { message });
 		}
 	} else {
-		res.send('<h1>Unauthorized Access</h1>');
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
 	};
 });
 

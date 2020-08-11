@@ -11,7 +11,8 @@ const addUser = require('../controllers/user/addUser');
 
 router.get('/', async function(req, res, next) {
 	if (!req.session.admin) {
-		res.send('<h1>Unauthorized Access</h1>');
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
 	} else {
 		const filename = 'data/users.json';
 		const users = await getUsers(filename);
@@ -22,7 +23,8 @@ router.get('/', async function(req, res, next) {
 // Delete user
 router.get('/delete/:username', function(req, res, next) {
 	if (!req.session.admin) {
-		res.send('<h1>Unauthorized Access</h1>');
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
 	} else {
 		const username = req.params.username;
 		deleteUser(username);
@@ -33,7 +35,8 @@ router.get('/delete/:username', function(req, res, next) {
 // Update user
 router.get('/user/:username', async function(req, res, next) {
 	if (!req.session.admin) {
-		res.send('<h1>Unauthorized Access</h1>');
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
 	} else {
 		const username = req.params.username;
 		const user = await getUser(username);
@@ -43,7 +46,8 @@ router.get('/user/:username', async function(req, res, next) {
 
 router.post('/user/update/:username', function(req, res, next) {
 	if (!req.session.admin) {
-		res.send('<h1>Unauthorized Access</h1>');
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
 	} else {
 		const username = req.params.username;
 		const user = {
@@ -60,7 +64,8 @@ router.post('/user/update/:username', function(req, res, next) {
 // Add new user
 router.get('/user', function(req, res, next) {
 	if (!req.session.admin) {
-		res.send('<h1>Unauthorized Access</h1>');
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
 	} else {
 		const currentDate = moment().format('DD-MM-YYYY');
 		const user = { createdDate: currentDate };
@@ -70,7 +75,8 @@ router.get('/user', function(req, res, next) {
 
 router.post('/user/add', function(req, res, next) {
 	if (!req.session.admin) {
-		res.send('<h1>Unauthorized Access</h1>');
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
 	} else {
 		const user = {
 			username: req.body.username,
