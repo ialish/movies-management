@@ -15,7 +15,7 @@ const addMovie = async (movieObj) => {
 		id = movies[movies.length - 1].id + 1;
 	}
 
-	movieObj = { id, ...movieObj};
+	movieObj = { id, ...movieObj };
 	movies.push(movieObj);
 	await setMovies(filename, movies);
 };
