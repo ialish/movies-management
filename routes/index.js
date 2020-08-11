@@ -1,16 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-const getShows = require('../models/showsData');
+const checkCredentials = require('../controllers/checkCredentials');
 
-router.get('/', async function(req, res, next) {
-	// res.render('index', { title: 'Express' });
-	let shows = await getShows();
-	shows = shows.data;
+router.get('/', function(req, res, next) {
+	res.render('index');
+});
 
-	const currentDate = moment().format('DD-MM-YYYY');
-
-	res.send(currentDate);
+router.post('/login', async function(req, res, next) {
+	await checkCredentials(req);	
+	if (req.session.admin) {
+		res.redirect('menu');
+	} else if (req.session.user) {
+		if (req.session.numOfTransactions > 0) {
+			res.redirect('menu');
+		} else {
+			res.send('<h1>You have no more credits left today</h1>');
+		}
+	} else {
+		res.send('<h1>Unauthorized Access</h1>');
+	};
 });
 
 module.exports = router;
