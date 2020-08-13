@@ -4,7 +4,7 @@ const router = express.Router();
 const getPropUniqueValues = require('../controllers/getPropUniqueValues');
 const getAllMovies = require('../controllers/getAllMovies');
 const getMatchedMovies = require('../controllers/getMatchedMovies');
-const getMoviesByGenre = require('../controllers/getMoviesByGenre');
+const arrangeMoviesByGenre = require('../controllers/arrangeMoviesByGenre');
 
 router.get('/', async function(req, res, next) {
 	if (!req.session.admin && !req.session.user) {
@@ -22,16 +22,16 @@ router.post('/results', async function(req, res, next) {
 	// 	const message = 'Unauthorized Access';
 	// 	res.render('alert', { message });
 	// } else {
-		const allMovies = await getAllMovies();
 		const movie = {
 			name: req.body.name,
 			language: req.body.language,
 			genre: req.body.genre
 		}
+		const allMovies = await getAllMovies();
 		const matchedMovies = await getMatchedMovies(allMovies, movie);
-		const moviesByGenre = await getMoviesByGenre(allMovies, matchedMovies);
+		const moviesByGenre = arrangeMoviesByGenre(allMovies);
 		
-		res.render('searchResults', { matchedMovies });
+		res.render('searchResults', { matchedMovies, moviesByGenre });
 	// };
 });
 
