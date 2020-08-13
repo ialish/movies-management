@@ -4,6 +4,8 @@ const router = express.Router();
 const checkCredentials = require('../controllers/checkCredentials');
 
 router.get('/', function(req, res, next) {
+	console.log("Japanese".includes('Japanese'))
+	
 	res.render('index');
 });
 
