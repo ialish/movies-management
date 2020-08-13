@@ -9,13 +9,13 @@ const getMatchedMovies = async (movieObj) => {
 	const allMovies = [...movies, ...shows];
 	const movieName = movieObj.name.toLowerCase();
 
-	const moviesRelated = allMovies.filter(movie => 
+	const matchedMovies = allMovies.filter(movie => 
 		movie.name.toLowerCase().includes(movieName) &&
 		movie.language.includes(movieObj.language) &&
 		(movie.genres.includes(movieObj.genre) || movieObj.genre === '')
 	);
 	
-	return moviesRelated;
+	return matchedMovies;
 };
 
 module.exports = getMatchedMovies;

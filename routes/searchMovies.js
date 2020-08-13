@@ -26,6 +26,7 @@ router.post('/results', async function(req, res, next) {
 			genre: req.body.genre
 		}
 		const matchedMovies = await getMatchedMovies(movie);
+		const moviesByGenre = await getMoviesByGenre(matchedMovies);
 		
 		res.render('searchResults', { matchedMovies });
 	// };
