@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const getPropUniqueValues = require('../controllers/getPropUniqueValues');
-const getMoviesRelated = require('../controllers/getMoviesRelated');
+const getMatchedMovies = require('../controllers/getMatchedMovies');
 
 router.get('/', async function(req, res, next) {
 	if (!req.session.admin && !req.session.user) {
@@ -25,9 +25,9 @@ router.post('/results', async function(req, res, next) {
 			language: req.body.language,
 			genre: req.body.genre
 		}
-		const moviesRelated = await getMoviesRelated(movie);
+		const matchedMovies = await getMatchedMovies(movie);
 		
-		res.render('searchResults', { moviesRelated });
+		res.render('searchResults', { matchedMovies });
 	// };
 });
 

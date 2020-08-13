@@ -1,7 +1,7 @@
 const getMovies = require('../models/readJSON');
 const getShows = require('../models/showsData');
 
-const getMoviesRelated = async (movieObj) => {
+const getMatchedMovies = async (movieObj) => {
 	const filename = 'data/newMovies.json';
 	const movies = await getMovies(filename);
 	let shows = await getShows();
@@ -18,4 +18,4 @@ const getMoviesRelated = async (movieObj) => {
 	return moviesRelated;
 };
 
-module.exports = getMoviesRelated;
+module.exports = getMatchedMovies;
