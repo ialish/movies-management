@@ -1,12 +1,4 @@
-const getMovies = require('../models/readJSON');
-const getShows = require('../models/showsData');
-
-const getMatchedMovies = async (movieObj) => {
-	const filename = 'data/newMovies.json';
-	const movies = await getMovies(filename);
-	let shows = await getShows();
-	shows = shows.data;
-	const allMovies = [...movies, ...shows];
+const getMatchedMovies = async (allMovies, movieObj) => {
 	const movieName = movieObj.name.toLowerCase();
 
 	const matchedMovies = allMovies.filter(movie => 

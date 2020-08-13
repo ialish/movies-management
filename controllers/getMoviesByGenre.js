@@ -1,7 +1,7 @@
 const getMovies = require('../models/readJSON');
 const getShows = require('../models/showsData');
 
-const getMoviesByGenre = async (movieObj) => {
+const getMoviesByGenre = async (matchedMovies) => {
 	const filename = 'data/newMovies.json';
 	const movies = await getMovies(filename);
 	let shows = await getShows();
