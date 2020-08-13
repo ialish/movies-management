@@ -8,8 +8,6 @@ const getMoviesRelated = async (movieObj) => {
 	shows = shows.data;
 	const allMovies = [...movies, ...shows];
 	const movieName = movieObj.name.toLowerCase();
-	
-	console.log(movieName)
 
 	const moviesRelated = allMovies.filter(movie => 
 		movie.name.toLowerCase().includes(movieName) &&
