@@ -5,6 +5,7 @@ const getPropUniqueValues = require('../controllers/getPropUniqueValues');
 const getAllMovies = require('../controllers/getAllMovies');
 const getMatchedMovies = require('../controllers/getMatchedMovies');
 const arrangeMoviesByGenre = require('../controllers/arrangeMoviesByGenre');
+const pairMovieToMoviesByGenre = require('../controllers/pairMovieToMoviesByGenre');
 
 router.get('/', async function(req, res, next) {
 	if (!req.session.admin && !req.session.user) {
@@ -30,8 +31,9 @@ router.post('/results', async function(req, res, next) {
 		const allMovies = await getAllMovies();
 		const matchedMovies = await getMatchedMovies(allMovies, movie);
 		const moviesByGenre = arrangeMoviesByGenre(allMovies);
+		const movieSearchResultObj = pairMovieToMoviesByGenre(matchedMovies, moviesByGenre);
 		
-		res.render('searchResults', { matchedMovies, moviesByGenre });
+		res.render('searchResults', { movieSearchResultObj });
 	// };
 });
 

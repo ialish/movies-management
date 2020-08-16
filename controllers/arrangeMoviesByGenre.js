@@ -2,7 +2,7 @@ const arrangeMoviesByGenre = (allMovies) => {
 	const moviesByGenre = {};
 
 	allMovies.forEach(movie => {
-		movie.genres.foreach(genre => {
+		movie.genres.forEach(genre => {
 			if (!moviesByGenre[genre]) {
 				moviesByGenre[genre] = [movie];
 			} else {

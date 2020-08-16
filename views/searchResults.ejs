@@ -11,11 +11,14 @@
 				<th width="300">Matched Movies</th>
 				<th width="300">Movies With Same Genre</th>
 			</tr>
-			<% matchedMovies.forEach(movie => { %>
+			<% movieSearchResultObj.forEach(movie => { %>
 				<tr>
 					<td><%= movie.name %></td>
-					<td>lala
-						
+					<td>
+						<select name="genre" id="genre">
+							<% movie.moviesWithSameGenre.forEach(mov => { %>
+								<option value="<%= mov.name %>"><%= mov.name %></option>
+							<% }); %>
 						</select>
 					</td>
 				</tr>
