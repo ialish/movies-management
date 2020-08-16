@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie Data</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+		<h1>Movie Data</h1>
+		<h3>ID: <%= movie.id %></h3>
+		<h3>Name: <%= movie.name %></h3>
+		<h3>Genres:
+			<% movie.genres.map((genre, index) => { %>
+				<% if (index !== movie.genres.length - 1) { %>
+					<%= genre %>,
+				<% } else { %>
+					<%= genre %>.
+				<% } %>
+			<% }) %>
+		</h3>
+		<h3>Language: <%= movie.language %></h3>
+		<h3>Movie Picture: </h3>
+		<a href="<%= movie.image.original %>">
+			<img src="<%= movie.image.medium %>" alt="Movie Picture"><br>
+		</a>
+		<br><a href="/search-movies/results">Back</a>
+		<br><a href="/menu">Back to Menu</a>
+  </body>
+</html>

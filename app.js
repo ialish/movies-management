@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const menuRouter = require('./routes/menu');
 const createMovieRouter = require('./routes/createMovie');
 const searchMoviesRouter = require('./routes/searchMovies');
+const movieDataRouter = require('./routes/movieData');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -32,6 +33,7 @@ app.use('/', indexRouter);
 app.use('/menu', menuRouter);
 app.use('/create-movie', createMovieRouter);
 app.use('/search-movies', searchMoviesRouter);
+app.use('/movie-data', movieDataRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

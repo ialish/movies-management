@@ -12,18 +12,19 @@
 			<label for="language">Language:</label>
 			<select name="language" id="language">
 				<option value=""></option>
-				<% languages.forEach(language => { %>
+				<% languages.map(language => { %>
 					<option value="<%= language %>"><%= language %></option>
 				<% }); %>
 			</select><br><br>
 			<label for="genre">Genre:</label>
 			<select name="genre" id="genre">
 				<option value=""></option>
-				<% genres.forEach(genre => { %>
+				<% genres.map(genre => { %>
 					<option value="<%= genre %>"><%= genre %></option>
 				<% }); %>
 			</select><br><br>
 			<input type="submit" value="Search">
 		</form>
+		<br><a href="/menu">Back</a>
   </body>
 </html>

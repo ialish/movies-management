@@ -1,8 +1,8 @@
 const pairMovieToMoviesByGenre = (moviesObj, moviesByGenre) => {
-	moviesObj.forEach(movie => {
+	moviesObj.map(movie => {
 		let uniqueMoviesWithSameGenre = new Set();
-		movie.genres.forEach((genre) => {
-			moviesByGenre[genre].forEach(mov => {
+		movie.genres.map((genre) => {
+			moviesByGenre[genre].map(mov => {
 				if (mov.id !== movie.id) {
 					uniqueMoviesWithSameGenre.add(mov);
 				}

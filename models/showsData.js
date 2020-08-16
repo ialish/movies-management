@@ -1,7 +1,14 @@
 const axios = require('axios');
 
-const getShows = () => {
-	const url = `https://api.tvmaze.com/shows`;
+const getShows = (id = '') => {
+	let url = ``;
+
+	if (id) {
+		url = `https://api.tvmaze.com/shows/${id}`;
+	} else {
+		url = `https://api.tvmaze.com/shows`;
+	}
+
 	return axios.get(url);
 };
 

@@ -10,7 +10,7 @@ const getPropUniqueValues = async (property) => {
 	
 	const uniqueValues = new Set();
 
-	allPropValues.forEach(propVal => uniqueValues.add(propVal));
+	allPropValues.map(propVal => uniqueValues.add(propVal));
 
 	return [...uniqueValues].sort();
 };

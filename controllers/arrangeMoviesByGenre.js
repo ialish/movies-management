@@ -1,8 +1,8 @@
 const arrangeMoviesByGenre = (allMovies) => {
 	const moviesByGenre = {};
 
-	allMovies.forEach(movie => {
-		movie.genres.forEach(genre => {
+	allMovies.map(movie => {
+		movie.genres.map(genre => {
 			if (!moviesByGenre[genre]) {
 				moviesByGenre[genre] = [movie];
 			} else {

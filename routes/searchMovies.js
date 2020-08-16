@@ -19,10 +19,10 @@ router.get('/', async function(req, res, next) {
 });
 
 router.post('/results', async function(req, res, next) {
-	// if (!req.session.admin && !req.session.user) {
-	// 	const message = 'Unauthorized Access';
-	// 	res.render('alert', { message });
-	// } else {
+	if (!req.session.admin && !req.session.user) {
+		const message = 'Unauthorized Access';
+		res.render('alert', { message });
+	} else {
 		const movie = {
 			name: req.body.name,
 			language: req.body.language,
@@ -31,10 +31,9 @@ router.post('/results', async function(req, res, next) {
 		const allMovies = await getAllMovies();
 		const matchedMovies = await getMatchedMovies(allMovies, movie);
 		const moviesByGenre = arrangeMoviesByGenre(allMovies);
-		const movieSearchResultObj = pairMovieToMoviesByGenre(matchedMovies, moviesByGenre);
-		
+		const movieSearchResultObj = pairMovieToMoviesByGenre(matchedMovies, moviesByGenre);		
 		res.render('searchResults', { movieSearchResultObj });
-	// };
+	};
 });
 
 module.exports = router;
