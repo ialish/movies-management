@@ -43,6 +43,6 @@ router.route('/results')
 		} else {
 			res.render('searchResults', { searchResult: req.session.searchResult });
 		};
-	})
+	});
 
 module.exports = router;
