@@ -28,14 +28,14 @@ router.post('/results', async function(req, res, next) {
 			language: req.body.language,
 			genre: req.body.genre
 		}
-		const allMovies = await getAllMovies();
+		const allMovies = await getAllMovies();		
 		const matchedMovies = await getMatchedMovies(allMovies, movie);
 		const moviesByGenre = arrangeMoviesByGenre(allMovies);
 		req.session.searchResult = pairMovieToMoviesByGenre(matchedMovies, moviesByGenre);
 		res.render('searchResults', { searchResult: req.session.searchResult });
+	} else {
+		res.render('searchResults', { searchResult: req.session.searchResult });
 	};
-
-	res.render('searchResults', { searchResult: req.session.searchResult });
 });
 
 module.exports = router;
