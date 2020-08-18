@@ -11,7 +11,7 @@
 				<th width="300">Matched Movies</th>
 				<th width="300">Movies With Same Genre</th>
 			</tr>
-			<% movieSearchResultObj.map(movie => { %>
+			<% searchResult.map(movie => { %>
 				<tr>
 					<td><a href="/movie-data/<%= movie.id %>"><%= movie.name %></a></td>
 					<td>
