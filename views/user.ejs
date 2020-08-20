@@ -8,13 +8,19 @@
     <h1>User Data</h1>
     <form action="/users/user/<%= route %>/<%= user.username %>" method="post">
 			<label for="username">User Name:</label>
-			<input type="text" id="username" name="username" value="<%= user.username %>"><br><br>
+			<input type="text" id="username" name="username" value="<%= user.username %>" required><br><br>
 			<label for="password">Password:</label>
-			<input type="text" id="password" name="password" value="<%= user.password %>"><br><br>
-			<label for="createdDate">Created Date:</label>
-			<input type="text" id="createdDate" name="createdDate" value="<%= user.createdDate %>"><br><br>
-			<label for="numOfTransactions">Number of Transactions:</label>
-			<input type="text" id="numOfTransactions" name="numOfTransactions" value="<%= user.numOfTransactions %>"><br><br>
+			<input type="text" id="password" name="password" value="<%= user.password %>" required><br><br>
+			Date:<br>
+			<label for="createdDate">&emsp; Created:</label>
+			<input type="text" id="createdDate" name="createdDate" value="<%= user.date.created %>" required><br>
+			<label for="lastLogin">&emsp; Last Login:</label>
+			<input type="text" id="lastLogin" name="lastLogin" value="<%= user.date.lastLogin %>" required><br><br>
+			Number of Transactions:<br>
+			<label for="eachDay">&emsp; Each Day:</label>
+			<input type="number" id="eachDay" name="eachDay" value="<%= user.numOfTransactions.eachDay %>" required><br>
+			<label for="today">&emsp; Today:</label>
+			<input type="number" id="today" name="today" value="<%= user.numOfTransactions.today %>" required><br><br>
 			<input type="submit" value="<%= button %>">
 		</form>
   </body>

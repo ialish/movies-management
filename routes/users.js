@@ -53,8 +53,14 @@ router.post('/user/update/:username', function(req, res, next) {
 		const user = {
 			username: req.body.username,
 			password: req.body.password,
-			createdDate: req.body.createdDate,
-			numOfTransactions: req.body.numOfTransactions
+			date: {
+				created: req.body.createdDate,
+				lastLogin: req.body.lastLogin
+			},
+			numOfTransactions: {
+				eachDay: req.body.eachDay,
+				today: req.body.today
+			}
 		};
 		updateUser(username, user);
 		res.redirect('/users');
@@ -68,7 +74,7 @@ router.get('/user', function(req, res, next) {
 		res.render('alert', { message });
 	} else {
 		const currentDate = moment().format('DD-MM-YYYY');
-		const user = { createdDate: currentDate };
+		const user = { currentDate };
 		res.render('user', { user, button: "Save", route: "add" });
 	};
 });
@@ -81,8 +87,14 @@ router.post('/user/add', function(req, res, next) {
 		const user = {
 			username: req.body.username,
 			password: req.body.password,
-			createdDate: req.body.createdDate,
-			numOfTransactions: req.body.numOfTransactions
+			date: {
+				created: req.body.currentDate,
+				lastLogin: req.body.currentDate
+			},
+			numOfTransactions: {
+				eachDay: req.body.numOfTransactions,
+				today: req.body.numOfTransactions
+			}
 		};
 		addUser(user);
 		res.redirect('/users');

@@ -5,6 +5,11 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+		<% if (message) { %>
+			<h1><%= message %></h1>
+			<p>Go back to <a href="/">Login Page</a></p>
+			<br>
+		<% } %>
 		<h1>Search Results</h1>
 		<table border="1" cellpadding="3">
 			<tr>
@@ -13,15 +18,21 @@
 			</tr>
 			<% searchResult.map(movie => { %>
 				<tr>
-					<td><a href="/movie-data/<%= movie.id %>"><%= movie.name %></a></td>
+					<% if (message) { %>
+						<td><%= movie.name %></td>
+					<% } else { %>
+						<td><a href="/movie-data/<%= movie.id %>"><%= movie.name %></a></td>
+					<% } %>
 					<td>
-						<select name="genre" id="genre">
-							<% movie.moviesWithSameGenre.map(mov => { %>
-								<option value="<%= mov.name %>">
-									<a href="/movie-data/<%= mov.id %>"><%= mov.name %></a>
-								</option>
-							<% }); %>
-						</select>
+						<% if (message) { %>
+							<select name="genre" id="genre">
+						<% } else { %>
+							<select name="genre" id="genre" onchange="location = this.value;">
+						<% } %>
+								<% movie.moviesWithSameGenre.map(mov => { %>
+									<option value="/movie-data/<%= mov.id %>"><%= mov.name %></option>
+								<% }); %>
+							</select>
 					</td>
 				</tr>
 			<% }); %>

@@ -8,8 +8,10 @@ const checkCredentials = async (req) => {
 	const sess = req.session;
 	
 	if (users[0].username === username && users[0].password === password) {
+		delete sess.user;
 		sess.admin = users[0];
 	} else {
+		delete sess.admin;
 		sess.user = users.find(user => { 
 			return user.username === username && user.password === password;
 		});
